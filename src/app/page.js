@@ -1,29 +1,21 @@
-'use client';
 
-import prisma from "@/lib/prisma";
 import Image from "next/image";
-import { useEffect } from "react";
+import Card from "@/components/card";
+import prisma from "@/lib/prisma";
 
-export default async function Home() {
 
-  const data = await getData()
-  console.log(data);
+const Home = async () => {
+
+  const tasks = await getTasks()
+  // console.log('tasks', tasks)
   return (
     <main >
       <div className=" min-h-screen mx-auto flex items-center justify-center">
         <div className="carousel carousel-center max-w-md p-4 space-x-4 rounded-box">
-          <div className="carousel-item card card-compact w-72 bg-base-100 shadow-xl">
-            <figure><img src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" /></figure>
-            <div className="card-body">
-              <h2 className="card-title">Shoes!</h2>
-              <p>If a dog chews shoes whose shoes does he choose?</p>
-              <div className="card-actions justify-end">
-                <button className="btn" onClick={() => document.getElementById('my_modal_3').showModal()}>open modal</button>
 
-                {/* <button className="btn btn-primary">Buy Now</button> */}
-              </div>
-            </div>
-          </div>
+          {tasks.map((task, index) => (
+            <Card key={task.id} data={task}/>
+          ))}
           <div className="carousel-item">
             <img src="https://daisyui.com/images/stock/photo-1559703248-dcaaec9fab78.jpg" className="rounded-box" />
           </div>
@@ -48,24 +40,13 @@ export default async function Home() {
         </div>
       </div>
 
-      {/* You can open the modal using document.getElementById('ID').showModal() method */}
-      {/* <button className="btn" onClick={() => document.getElementById('my_modal_3').showModal()}>open modal</button> */}
-      <dialog id="my_modal_3" className="modal">
-        <div className="modal-box">
-          <form method="dialog">
-            {/* if there is a button in form, it will close the modal */}
-            <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
-          </form>
-          <h3 className="font-bold text-lg">Hello!</h3>
-          <p className="py-4">Press ESC key or click on ✕ button to close</p>
-        </div>
-      </dialog>
+
     </main>
   );
 }
+export default Home;
 
-
-async function getData(){
-  const task = await prisma.task.findMany()
-  return task
+const getTasks = async () => {
+  const tasks = await prisma.task.findMany()
+  return tasks;
 }
