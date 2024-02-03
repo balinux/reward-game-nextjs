@@ -3,6 +3,7 @@
 import Image from "next/image";
 
 export default function Home() {
+  console.log("this is home page")
   return (
     <main >
       <div className=" min-h-screen mx-auto flex items-center justify-center">

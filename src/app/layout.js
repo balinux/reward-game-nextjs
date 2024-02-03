@@ -26,7 +26,7 @@ export default function RootLayout({ children }) {
             </div>
           </div>
           <div className="navbar-center">
-            <a className="btn btn-ghost text-xl">daisyUI</a>
+            <a className="btn btn-ghost text-xl">Reward Game</a>
           </div>
           <div className="navbar-end">
             <button className="btn btn-ghost btn-circle">
@@ -38,7 +38,7 @@ export default function RootLayout({ children }) {
                 <span className="badge badge-xs badge-primary indicator-item"></span>
               </div>
             </button>
-            
+
           </div>
         </div>
         {children}</body>
