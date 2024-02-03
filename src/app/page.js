@@ -1,9 +1,13 @@
 'use client';
 
+import prisma from "@/lib/prisma";
 import Image from "next/image";
+import { useEffect } from "react";
 
-export default function Home() {
-  console.log("this is home page")
+export default async function Home() {
+
+  const data = await getData()
+  console.log(data);
   return (
     <main >
       <div className=" min-h-screen mx-auto flex items-center justify-center">
@@ -58,4 +62,10 @@ export default function Home() {
       </dialog>
     </main>
   );
+}
+
+
+async function getData(){
+  const task = await prisma.task.findMany()
+  return task
 }
