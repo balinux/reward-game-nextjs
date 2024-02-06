@@ -24,18 +24,29 @@ export const POST = async (request) => {
 
     // Ambil informasi tugas
     const tasks = await prisma.task.findUnique({
-      where: { id: taskId }
+      where: { id: taskId },
+      include: {
+        users: true
+      }
     });
-    
+
     console.log("tasks", tasks)
-    return NextResponse.json(tasks)
+
+    //update total point
+    const updateUser = await prisma.user.update({
+      where: { id: userId },
+      data: { totalPoints: tasks.user.totalPoints + tasks.points }
+    })
+
+    console.log("updateUser", updateUser)
+    return NextResponse.json({ user: updateUser, tasks: completedTask })
   } catch (error) {
     console.error("Error completing task:", error);
 
     //return NextResponse.json({ error: "Internal Server Error" });
     return NextResponse.json({ error });
   }
-  console.log(body)
+  //  console.log(body)
   //const userTaskList = await prisma.userTask.create({
 
   //})
