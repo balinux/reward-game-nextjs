@@ -30,8 +30,6 @@ model User {
   tasks       UserTask[]
   createdAt   DateTime   @default(now()) @map(name: "created_at")
   updatedAt   DateTime   @updatedAt @map(name: "updated_at")
-
-  @@map(name: "users")
 }
 
 model UserTask {
