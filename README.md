@@ -38,3 +38,4 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 
 ## referensi
 - next prisma: https://www.youtube.com/watch?v=0jtx2hUCxfM
+- article : https://vercel.com/guides/nextjs-prisma-postgres
