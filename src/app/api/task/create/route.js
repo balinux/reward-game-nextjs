@@ -23,23 +23,32 @@ export const POST = async (request) => {
     console.log("create usertask", createUserTask)
 
     // Ambil informasi tugas
-    const tasks = await prisma.task.findUnique({
-      where: { id: taskId },
+    const user = await prisma.user.findUnique({
+      where: { id: userId },
       include: {
-        users: true
-      }
+        tasks: {
+          include: {
+            task: true,
+          },
+        },
+      },
     });
 
-    console.log("tasks", tasks)
+    console.log("user", user)
 
-    //update total point
+    // Hitung total poin dari semua tugas pengguna
+    const totalPoints = user.tasks.reduce(
+      (acc, userTask) => acc + userTask.task.points,
+      0
+    );
+
+    // Update total point
     const updateUser = await prisma.user.update({
       where: { id: userId },
-      data: { totalPoints: tasks.user.totalPoints + tasks.points }
-    })
+      data: { totalPoints },
+    });
 
-    console.log("updateUser", updateUser)
-    return NextResponse.json({ user: updateUser, tasks: completedTask })
+    return NextResponse.json({ user: updateUser, task: completedTask });
   } catch (error) {
     console.error("Error completing task:", error);
 
