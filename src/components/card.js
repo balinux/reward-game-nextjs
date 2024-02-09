@@ -2,8 +2,9 @@
 
 const Card = ({ data }) => {
 
-  const claimReward = () => {
+  const claimReward = (task) => {
     console.log("berhasil menambahkan reward")
+    console.log(task)
     document.getElementById('my_modal_3').close()
   }
 
@@ -34,7 +35,7 @@ const Card = ({ data }) => {
           </form>
           <h3 className="font-bold text-lg">Kamu yakin?</h3>
           <p className="py-4">kamu yakin sudah mengerjakan tugas: <span className="font-bold" >{data.title ?? "tidak ada judul"}</span> </p>
-          <button className="btn btn-block btn-primary text-white" onClick={claimReward}> Gasss!!!!</button>
+          <button className="btn btn-block btn-primary text-white" onClick={() => claimReward(data.title)}> Gasss!!!!</button>
         </div>
       </dialog>
     </>

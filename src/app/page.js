@@ -13,8 +13,8 @@ const Home = async () => {
       <div className=" min-h-screen mx-auto flex items-center justify-center">
         <div className="carousel carousel-center max-w-md p-4 space-x-4 rounded-box">
 
-          {tasks.map((task, index) => (
-            <Card key={task.id} data={task}/>
+          {tasks.map((task) => (
+            <Card key={task.id} data={task} />
           ))}
           <div className="carousel-item">
             <img src="https://daisyui.com/images/stock/photo-1559703248-dcaaec9fab78.jpg" className="rounded-box" />
