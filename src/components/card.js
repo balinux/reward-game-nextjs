@@ -7,7 +7,8 @@ const Card = ({ data }) => {
   const claimReward = (task) => {
     console.log("berhasil menambahkan reward");
     console.log(task);
-    // document.getElementById("my_modal_3").close();
+
+    // buat fungsi untuk menambah reward ke user yang mengerjakan task
   };
 
   return (
