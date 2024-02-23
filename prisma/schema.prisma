@@ -12,31 +12,21 @@ datasource db {
 }
 
 model Task {
-  id          String     @id @default(cuid())
+  id          String   @id @default(cuid())
   title       String
   description String?
-  points      Int        @default(0)
-  completed   Boolean    @default(false)
-  completedBy Int?
-  users       UserTask[]
+  points      Int      @default(0)
+  completed   Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 }
 
 model User {
-  id          String     @id @default(cuid())
+  id          String   @id @default(cuid())
   name        String
-  email       String?    @unique
+  email       String?  @unique
   password    String?
-  totalPoints Int        @default(0)
-  tasks       UserTask[]
-  createdAt   DateTime   @default(now()) @map(name: "created_at")
-  updatedAt   DateTime   @updatedAt @map(name: "updated_at")
-}
-
-model UserTask {
-  userId String
-  taskId String
-  user   User   @relation(fields: [userId], references: [id])
-  task   Task   @relation(fields: [taskId], references: [id])
-
-  @@id([userId, taskId])
+  totalPoints Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 }
