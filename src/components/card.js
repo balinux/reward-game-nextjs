@@ -1,13 +1,23 @@
 "use client";
+import prisma from "@/lib/prisma";
 import { useState } from "react";
+import axios from "axios";
+import { useRouter } from "next/navigation";
 
 const Card = ({ data }) => {
   const [isModalOpen, setIsmodalOpen] = useState(false);
 
-  const claimReward = (task) => {
+  const router = useRouter();
+
+  const claimReward = async (task) => {
     console.log("berhasil menambahkan reward");
-    console.log(task);
-    // document.getElementById("my_modal_3").close();
+    // console.log(task);
+    if (task) {
+      const response = await axios.post("/api/task/create2", task);
+      console.log("response: ", response.data);
+      router.refresh();
+    }
+    // buat fungsi untuk menambah reward ke user yang mengerjakan task
   };
 
   return (
