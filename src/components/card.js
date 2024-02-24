@@ -2,9 +2,12 @@
 import prisma from "@/lib/prisma";
 import { useState } from "react";
 import axios from "axios";
+import { useRouter } from "next/navigation";
 
 const Card = ({ data }) => {
   const [isModalOpen, setIsmodalOpen] = useState(false);
+
+  const router = useRouter();
 
   const claimReward = async (task) => {
     console.log("berhasil menambahkan reward");
@@ -12,6 +15,7 @@ const Card = ({ data }) => {
     if (task) {
       const response = await axios.post("/api/task/create2", task);
       console.log("response: ", response.data);
+      router.refresh();
     }
     // buat fungsi untuk menambah reward ke user yang mengerjakan task
   };
