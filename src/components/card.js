@@ -1,13 +1,18 @@
 "use client";
+import prisma from "@/lib/prisma";
 import { useState } from "react";
+import axios from "axios";
 
 const Card = ({ data }) => {
   const [isModalOpen, setIsmodalOpen] = useState(false);
 
-  const claimReward = (task) => {
+  const claimReward = async (task) => {
     console.log("berhasil menambahkan reward");
-    console.log(task);
-
+    // console.log(task);
+    if (task) {
+      const response = await axios.post("/api/task/create2", task);
+      console.log("response: ", response.data);
+    }
     // buat fungsi untuk menambah reward ke user yang mengerjakan task
   };
 
