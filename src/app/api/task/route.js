@@ -8,7 +8,7 @@ export async function GET() {
       completed: false,
     },
   });
-  console.log("tasks", tasks);
+  // console.log("tasks", tasks);
   return NextResponse.json(
     {
       sucess: true,
@@ -20,4 +20,3 @@ export async function GET() {
     },
   );
 }
-
