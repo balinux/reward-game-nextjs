@@ -35,8 +35,12 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
 
-
 ## referensi
+
 - next prisma: https://www.youtube.com/watch?v=0jtx2hUCxfM
 - article : https://vercel.com/guides/nextjs-prisma-postgres
 - retion many to many: https://www.prisma.io/docs/orm/prisma-schema/data-model/relations/many-to-many-relations
+
+## Task
+
+- [ ] memperbaiki deployment yang beda dengan di production
