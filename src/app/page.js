@@ -2,6 +2,7 @@ import Image from "next/image";
 import Card from "@/components/card";
 import prisma from "@/lib/prisma";
 import AddTask from "@/components/task_form_modal";
+import { ButtonBadge } from "@/components/custom_button";
 
 const Home = async () => {
   const tasks = await getTasks();
@@ -11,6 +12,7 @@ const Home = async () => {
       <div className=" min-h-screen mx-auto flex items-center justify-center">
         <div className=" flex flex-col ml-5 sm:ml-0 overflow-hidden">
           <AddTask />
+          <ButtonBadge />
           <div className="carousel carousel-center max-w-md p-4 space-x-4 rounded-box">
             {tasks.map((task) => (
               <Card key={task.id} data={task} />
