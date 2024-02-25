@@ -12,7 +12,7 @@ export const POST = async (request) => {
         id: "clszl9p6t0000xy6qmum8vcv3",
       },
     });
-    // console.log(user);
+    console.log("data user: ", user);
 
     // jika user ditemukan maka update point user
     if (user) {
@@ -26,6 +26,8 @@ export const POST = async (request) => {
           },
         },
       });
+
+      console.log("udpateUser: ", updateUser);
 
       if (updateUser) {
         //update status task status

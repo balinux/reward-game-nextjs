@@ -13,9 +13,13 @@ const Card = ({ data }) => {
     console.log("berhasil menambahkan reward");
     // console.log(task);
     if (task) {
-      const response = await axios.post("/api/task/create2", task);
-      console.log("response: ", response.data);
-      router.refresh();
+      try {
+        const response = await axios.post("/api/task/create2", task);
+        console.log("response claimReward: ", response.data);
+        router.refresh();
+      } catch (error) {
+        console.log("error clain reward: ", error);
+      }
     }
     // buat fungsi untuk menambah reward ke user yang mengerjakan task
   };

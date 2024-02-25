@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 
 export const GET = async () => {
   try {
-    await prisma.task.updateMany({
+    const resetData = await prisma.task.updateMany({
       where: {
         completed: true,
       },
@@ -12,6 +12,7 @@ export const GET = async () => {
       },
     });
     console.log("semua task sudah di update ke false");
+    console.log("reset data: ", resetData);
     return NextResponse.json({
       data: {
         code: 200,
