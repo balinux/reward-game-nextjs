@@ -1,6 +1,7 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
 import ButtonReset from "@/components/reset-button";
+import AddTask from "@/components/task_form_modal";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -50,6 +51,7 @@ export default function RootLayout({ children }) {
                   <a>About</a>
                 </li>
                 <ButtonReset />
+                <AddTask />
               </ul>
             </div>
           </div>
