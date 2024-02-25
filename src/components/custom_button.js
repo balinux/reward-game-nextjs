@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 export const ButtonBadge = () => {
   const router = useRouter();
 
-  const [data, setData] = useState(0);
+  const [data, setData] = useState(null);
 
   useEffect(() => {
     getUser("clszl9p6t0000xy6qmum8vcv3");
@@ -17,6 +17,7 @@ export const ButtonBadge = () => {
     try {
       const response = await axios.get(`/api/user/${userId}`);
       console.log("data user: ", response);
+      setData(response.data.data.user);
     } catch (error) {
       console.log("error get user data: ", error);
     }
@@ -24,8 +25,8 @@ export const ButtonBadge = () => {
 
   return (
     <button className="btn">
-      Inbox
-      <div className="badge badge-secondary">+99</div>
+      {data?.name}
+      <div className="badge badge-secondary">{data?.totalPoints} ⭐</div>
     </button>
   );
 };
