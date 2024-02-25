@@ -51,7 +51,6 @@ export default function RootLayout({ children }) {
                   <a>About</a>
                 </li>
                 <ButtonReset />
-                <AddTask />
               </ul>
             </div>
           </div>
