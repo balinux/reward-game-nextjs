@@ -10,6 +10,7 @@ const Home = async () => {
     <main>
       <div className=" min-h-screen mx-auto flex items-center justify-center">
         <div className=" flex flex-col">
+          <AddTask />
           <div className="carousel carousel-center max-w-md p-4 space-x-4 rounded-box">
             {tasks.map((task) => (
               <Card key={task.id} data={task} />
@@ -57,7 +58,6 @@ const Home = async () => {
               />
             </div>
           </div>
-          <AddTask />
         </div>
       </div>
     </main>
