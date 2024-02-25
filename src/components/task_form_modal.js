@@ -41,7 +41,7 @@ const AddTask = () => {
 
   return (
     <div>
-      <button className="btn" onClick={handleModal}>
+      <button className="btn ml-5 sm:ml-0" onClick={handleModal}>
         <svg
           className="h-6 w-6"
           viewBox="0 0 24 24"

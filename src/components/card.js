@@ -3,6 +3,7 @@ import prisma from "@/lib/prisma";
 import { useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 const Card = ({ data }) => {
   const [isModalOpen, setIsmodalOpen] = useState(false);
@@ -28,10 +29,17 @@ const Card = ({ data }) => {
     <>
       <div className="carousel-item card card-compact w-80 bg-base-100 shadow-xl">
         <figure>
-          <img
+          <Image
             src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"
-            alt="Shoes"
-          />
+            alt="Image 1"
+            className="rounded-box mt-3"
+            width={300}
+            height={200}
+          />{" "}
+          {/* <img */}
+          {/*   src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" */}
+          {/*   alt="Shoes" */}
+          {/* /> */}
         </figure>
         <div className="card-body">
           <h2 className="card-title">
