@@ -24,7 +24,10 @@ export const ButtonBadge = () => {
   };
 
   return (
-    <button className="btn">
+    <button
+      className="btn mr-5 sm:mr-0"
+      onClick={() => getUser("clszl9p6t0000xy6qmum8vcv3")}
+    >
       {data?.name}
       <div className="badge badge-secondary">{data?.totalPoints} ⭐</div>
     </button>
