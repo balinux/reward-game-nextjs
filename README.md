@@ -39,7 +39,8 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 
 - next prisma: https://www.youtube.com/watch?v=0jtx2hUCxfM
 - article : https://vercel.com/guides/nextjs-prisma-postgres
-- retion many to many: https://www.prisma.io/docs/orm/prisma-schema/data-model/relations/many-to-many-relations
+- [relation amny to many prisma](https://www.youtube.com/watch?v=gEB3ckYeZF4)
+- [api route dynamic nextjs with params](https://www.youtube.com/watch?v=gEB3ckYeZF4)
 
 ## Task
 
