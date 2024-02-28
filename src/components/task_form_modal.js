@@ -3,6 +3,7 @@
 import { useRouter } from "next/navigation";
 import axios from "axios";
 import { useState } from "react";
+import FileUploader from "./file-uploader";
 
 const AddTask = () => {
   const [title, setTitle] = useState();
@@ -68,6 +69,7 @@ const AddTask = () => {
         <div className="modal-box">
           <h3 className="font-bold text-lg">Tambah Tugas</h3>
           <form onSubmit={handleSubmit}>
+            <FileUploader />
             <div className="form-control w-full">
               <label className="label font-bold">Nama Tugas</label>
               <input
