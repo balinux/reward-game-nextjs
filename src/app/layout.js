@@ -2,6 +2,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import ButtonReset from "@/components/reset-button";
 import AddTask from "@/components/task_form_modal";
+import Link from "next/link";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -46,6 +47,9 @@ export default function RootLayout({ children }) {
                 </li>
                 <li>
                   <a>Portfolio</a>
+                </li>
+                <li>
+                  <Link href={"/reward"}>Reward</Link>
                 </li>
                 <li>
                   <a>About</a>
