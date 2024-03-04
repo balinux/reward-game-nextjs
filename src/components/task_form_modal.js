@@ -11,8 +11,15 @@ const AddTask = () => {
   const [point, setPoint] = useState(5);
   const [isOpen, setIsOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [uploadedFile, setUploadedFile] = useState(null);
 
   const router = useRouter();
+
+  const handleFileUpload = (file) => {
+    // Disini Anda dapat melakukan apa pun yang diperlukan dengan informasi file yang diunggah
+    console.log("File uploaded:", file);
+    setUploadedFile(file);
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -68,8 +75,8 @@ const AddTask = () => {
       <div className={isOpen ? "modal modal-open" : "modal"}>
         <div className="modal-box">
           <h3 className="font-bold text-lg">Tambah Tugas</h3>
+          <FileUploader onImageUploaded={handleFileUpload} />
           <form onSubmit={handleSubmit}>
-            <FileUploader />
             <div className="form-control w-full">
               <label className="label font-bold">Nama Tugas</label>
               <input
