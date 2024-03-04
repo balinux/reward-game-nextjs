@@ -40,13 +40,13 @@ const UploadForm = ({ onImageUploaded }) => {
   const { getRootProps, getInputProps } = useDropzone({ onDropAccepted });
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form  onSubmit={handleSubmit}>
       <div {...getRootProps({ className: "dropzone" })}>
         <input {...getInputProps()} />
         <p>Drag & drop file di sini, atau klik untuk memilih file</p>
       </div>
       {file && <p>File yang diunggah: {file.name}</p>}
-      <button type="submit" disabled={!file}>
+      <button className="btn btn-primary mt-2" type="submit" disabled={!file}>
         Unggah
       </button>
     </form>

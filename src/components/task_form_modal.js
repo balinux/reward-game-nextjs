@@ -22,6 +22,12 @@ const AddTask = () => {
   };
 
   const handleSubmit = async (e) => {
+    // Check if a file has been uploaded
+    if (!uploadedFile) {
+      console.log("Please upload a file before submitting.");
+      return; // Exit the function if no file is uploaded
+    }
+
     e.preventDefault();
     setIsLoading(true);
     try {
@@ -75,6 +81,8 @@ const AddTask = () => {
       <div className={isOpen ? "modal modal-open" : "modal"}>
         <div className="modal-box">
           <h3 className="font-bold text-lg">Tambah Tugas</h3>
+          <label className="label font-bold">Pilih Gambar</label>
+
           <FileUploader onImageUploaded={handleFileUpload} />
           <form onSubmit={handleSubmit}>
             <div className="form-control w-full">
@@ -147,7 +155,8 @@ const AddTask = () => {
                 Close
               </button>
               {!isLoading ? (
-                <button type="submit" className="btn btn-primary">
+                <button type="submit" className={`btn btn-primary ${uploadedFile ? '' : 'disabled'}`}
+                  disabled={!uploadedFile}>
                   Save
                 </button>
               ) : (
