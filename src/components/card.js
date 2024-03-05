@@ -7,12 +7,12 @@ import Image from "next/image";
 
 const Card = ({ data }) => {
   const [isModalOpen, setIsmodalOpen] = useState(false);
-
+  console.log("data: ", data);
   const router = useRouter();
 
   const claimReward = async (task) => {
     console.log("berhasil menambahkan reward");
-    // console.log(task);
+    // console.log("task: ", task);
     if (task) {
       try {
         const response = await axios.post("/api/task/create2", task);
@@ -30,7 +30,12 @@ const Card = ({ data }) => {
       <div className="carousel-item card card-compact w-80 bg-base-100 shadow-xl">
         <figure>
           <Image
-            src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"
+            // src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"
+            src={
+              data.url_image != null
+                ? `/${data.url_image}`
+                : "https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"
+            }
             alt="Image 1"
             className="rounded-box mt-3"
             width={300}
@@ -41,6 +46,7 @@ const Card = ({ data }) => {
           {/*   alt="Shoes" */}
           {/* /> */}
         </figure>
+        <p>{data.image_url}</p>
         <div className="card-body">
           <h2 className="card-title">
             {data.title}
