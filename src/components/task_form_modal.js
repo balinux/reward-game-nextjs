@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import axios from "axios";
 import { useState } from "react";
 import FileUploader from "./file-uploader";
+import Image from "next/image";
 
 const AddTask = () => {
   const [title, setTitle] = useState();
@@ -32,6 +33,7 @@ const AddTask = () => {
     setIsLoading(true);
     try {
       const addTask = await axios.post("/api/task/add", {
+        url_image: uploadedFile.imageUrl,
         title: title,
         description: description,
         points: point,
@@ -44,6 +46,7 @@ const AddTask = () => {
     setTitle("");
     setDescription("");
     setPoint(5);
+    setUploadedFile(null);
     // setBrand("");
     router.refresh();
     setIsOpen(false);
@@ -82,8 +85,18 @@ const AddTask = () => {
         <div className="modal-box">
           <h3 className="font-bold text-lg">Tambah Tugas</h3>
           <label className="label font-bold">Pilih Gambar</label>
-
+          {uploadedFile && (
+            <Image
+              src={`/${uploadedFile.imageUrl}`}
+              alt="Image description"
+              height={150}
+              width={300}
+              className="mt-4"
+              // layout="fill" // Adjust layout as needed
+            />
+          )}
           <FileUploader onImageUploaded={handleFileUpload} />
+
           <form onSubmit={handleSubmit}>
             <div className="form-control w-full">
               <label className="label font-bold">Nama Tugas</label>
@@ -155,8 +168,11 @@ const AddTask = () => {
                 Close
               </button>
               {!isLoading ? (
-                <button type="submit" className={`btn btn-primary ${uploadedFile ? '' : 'disabled'}`}
-                  disabled={!uploadedFile}>
+                <button
+                  type="submit"
+                  className={`btn btn-primary ${uploadedFile ? "" : "disabled"}`}
+                  disabled={!uploadedFile}
+                >
                   Save
                 </button>
               ) : (
