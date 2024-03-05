@@ -32,8 +32,8 @@ const Card = ({ data }) => {
           <Image
             // src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"
             src={
-              data.image_url != null
-                ? `/${data.image_url}`
+              data.url_image != null
+                ? `/${data.url_image}`
                 : "https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"
             }
             alt="Image 1"
